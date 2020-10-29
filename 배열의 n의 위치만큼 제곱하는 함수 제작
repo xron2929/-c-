@@ -1,0 +1,25 @@
+
+
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+
+int main()
+{
+	string b;
+	int c;
+	int a = 0;
+	int e;
+	int word;
+	cin >> b;
+	for (int i = 0; i <size(b); i++)
+	{
+		cout << "i"<<i << endl;
+		cout << "b[i]"<<b[i] << endl;
+		c = pow(10, size(b)-i-1);
+		cout << "C " << c << endl;
+		word = int(b[i] - 48) * c;
+		cout << word << endl;
+	}
+}
