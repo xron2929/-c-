@@ -1,0 +1,100 @@
+
+
+#include <iostream>
+#include <bitset>
+#define _CRT_SECURE_NO_WARNINGS
+
+using namespace std;
+
+
+/*
+
+int main()
+{
+	string b;
+	char result[100];
+	
+	while (true)
+	{
+		
+	
+		cin >> b;
+		cout << "b "<<b << endl;
+		cout << "크기 "<<size(b) << endl;
+		for (int i = 0; i < size(b); i++)
+		{
+			int word = int(b[i]-48);	//word:글자 하나씩 인식
+			//cout << "word: " << word << endl;
+			if (word == 1)
+			{
+				cout << "0001 ";
+			}
+			else if (word == 2)
+			{
+				cout << "0010 ";
+			}
+			else if (word == 3)
+			{
+				cout << "0011 ";
+			}
+			else if (word == 4)
+			{
+				cout << "0100 ";
+			}
+			else if (word == 5)
+			{
+				cout << "0101 ";
+			}
+			else if (word == 6)
+			{
+				cout << "0110 ";
+			}
+			else if (word == 7)
+			{
+				cout << "0111 ";
+			}
+			else if (word == 8)
+			{
+				cout << "1000 ";
+			}
+			else if (word == 9)
+			{
+				cout << "1001 ";
+			}
+			else
+				cout << "오류입니다 << endl;
+		}
+	}
+}
+
+*/
+
+
+
+
+int main()
+{
+	string array;
+	cin >> array;
+	cout << size(array) << endl;
+	int *changed_num = new int[sizeof(array)];
+	changed_num[0] = int(array[0]-48);
+	int word = size(array);
+	for (int i = 1; i < word; i++)
+	{
+		cout << "Word" << word - 1 << endl;
+		if (array[i] == array[i - 1])
+		{
+			changed_num[i] = 0;
+		}
+		else
+		{
+			changed_num[i] = 1;
+		}
+	}
+	cout << "첫번쨰값"<<changed_num[0] << endl;
+	for (int i = 0; i < word; i++)
+	{
+		cout << changed_num[i];
+	}
+}
