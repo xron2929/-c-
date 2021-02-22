@@ -1,0 +1,26 @@
+​#include<iostream>
+using namespace std;
+int main()
+{
+	int lt,cur,rt,k=1,res=0;
+	int n;
+	cin>>n;
+	lt=n/10;
+	cur=n%10;
+	while(lt!=0)
+	{
+		lt=n/(k*10);
+		cur=(n/k)%10;
+		rt=n%k;
+		if(cur>4)
+			res=res+(lt+1)*k;
+		else if(cur<4)
+			res=res+(lt*k);
+		else
+			res=res+(lt*k)+(rt+1);
+		k*=10;
+	}
+	cout<<res<<" ";
+}
+//1부터 n까지의 자리수를 조사해 4의 개수를 찾는 코드이다. (4,14,24,34,44등의개수)이를 조금만 활용해, 4를 3으로 바꾸면, 3의 자릿수로 바꾸거나 할수있고, 메모리 영역도 자유롭다
+//또, 4 대신 변수로 바꾸면, 입력한 변수의 자리수가 몇개인지 확인도 가능하기 때문에 넣었다
