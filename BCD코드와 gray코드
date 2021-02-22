@@ -73,46 +73,30 @@ int main()
 
 int main()
 {
-	string array;
-	cin >> array;
-	//cout << size(array) << endl;
-	int *changed_num = new int[sizeof(array)];
-	int* gray_code = new int[sizeof(array)];
-	int word = size(array);
-	for (int j = 0; j < word; j++)
-	{
-		array[j] = int(array[j] - 48);
-	}
-	changed_num[0] = array[0];
-	
-	for (int i = 1; i < word; i++)
-	{
-		//cout << "Word" << word - 1 << endl;
-		if (array[i] == array[i - 1])
-		{
-			changed_num[i] = 0;
-		}
-		else
-		{
-			changed_num[i] = 1;
-		}
-	}
+#include<iostream>
+using namespace std;
 
-	for (int k = 0; k < word; k++)
+
+void gray(char a[100],int n)
+{
+	cout<<a[0]<<" ";
+	for(int i=1;i<n;i++)
 	{
-		cout <<changed_num[k];
-		if (array[k] == changed_num[k])
-		{
-			gray_code[k] = 0;
-		}
-		else
-			gray_code[k] = 1;
-		
+		if(a[i]==a[i-1]) cout<<0<<" ";
+		else if(a[i]!=a[i-1]) cout<<1<<" ";
 	}
-	cout << endl;
-	for (int b = 0; b < word; b++)
+}
+
+int main()
+{
+	char a[100];
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
 	{
-		cout<< gray_code[b];
+		cin>>a[i];
 	}
+	gray(a,n);
+}
 	
 }
