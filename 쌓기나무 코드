@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+	freopen("input.txt","rt",stdin);
+	int i,j,n,k=1;
+	int arr[11][11]={0,};
+	int brr[11][11]={0,};
+	cin>>n;
+	//cout<<n<<" ";
+	for(j=1;j<=n;j++)
+	{
+		cin>>arr[1][j];
+	}
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			brr[i][j]=arr[1][j];
+		//	cout<<brr[i][j]<<" ";
+		}
+	//cout<<"\n";
+	}
+	for(i=1;i<=n;i++)
+	{
+		cin>>arr[i][n];
+	}
+	for(i=n;i>=1;i--)
+	{
+		for(j=1;j<=n;j++)
+		{
+			if(brr[i][j]>arr[i][n]) 
+			{
+			brr[i][j]=arr[i][n];
+			//cout<<brr[i][j]<<" ";
+			}
+			cout<<brr[i][j]<<" ";
+		}
+	cout<<"\n";
+	}
+	
+}
+// 쌓기 나무의 정면 과 옆모습을 입력하였을 때, 쌓기나무 위의 모습을 출력하는 코드 주소 참조 https://blog.daum.net/ilikemath/465
