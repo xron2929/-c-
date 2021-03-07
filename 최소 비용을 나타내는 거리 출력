@@ -1,0 +1,56 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int ch[100],path[100],temp[100];
+vector<pair<int, int> > v[100];
+int n,m,sum=0,Min=999999,pos;
+
+void DFS(int L,int a,int sum)
+{
+	int i,j;
+	if(L==n)
+	{
+		if(Min>sum)
+		{
+		 pos=a;
+		 Min=sum;
+		for(j=0;j<a;j++)
+			temp[j]=path[j];  //경로를 덮어쓰기 해서 출력하는 
+		}
+	}
+	else
+	{
+		for(i=0;i<v[L].size();i++)
+		{
+			if(ch[v[L][i].first]==0)
+			{
+				ch[v[L][i].first]=1;
+				path[a]=v[L][i].first;
+				DFS(v[L][i].first,a+1,v[L][i].second+sum);
+				ch[v[L][i].first]=0;
+			}
+		}
+	}
+}
+
+
+int main()
+{
+	freopen("input.txt","rt",stdin);
+	int i,a,b,c;
+	cin>>n>>m;
+	for(i=1;i<=m;i++)
+	{
+		cin>>a>>b>>c;	
+		v[a].push_back(make_pair(b,c));
+	}
+	ch[1]=1;
+	path[0]=1;
+	DFS(1,1,0);
+	for(i=0;i<pos;i++)
+		cout<<temp[i]<<" ";
+	cout<<"\n";
+	cout<<Min<<" ";
+
+}
