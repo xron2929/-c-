@@ -1,0 +1,165 @@
+#include<iostream>
+#include <stdio.h>
+#include<cstring>
+using namespace std;
+
+int main()
+{
+	int i,size,p=0;
+	char dna_code[1000],trans[1000],x;
+	scanf("%s",dna_code);
+	
+	for(int i=2;dna_code[i]!='\0';i++)
+	{
+		if(i%3==2)
+		{
+			if(dna_code[i-2]=='T')
+			{
+				if(dna_code[i-1]=='T')
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{
+						trans[++p]='F';
+					}
+					else if(dna_code[i]=='A'||dna_code[i]=='G')
+					{
+						trans[++p]='L';
+					}	
+				}
+				else if(dna_code[i-1]=='C')
+				{
+					trans[++p]='S';				
+				}
+				else if(dna_code[i-1]=='A')
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{
+						trans[++p]='Y';
+					}
+					if(dna_code[i]=='A'||dna_code[i]=='G')
+					{
+						trans[++p]='*';
+					}
+				}
+				else if(dna_code[i-1]=='G')	
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{
+						trans[++p]='C';
+					}
+					if(dna_code[i]=='A')
+					{
+						trans[++p]='*';
+					}
+					if(dna_code[i]=='G')
+					{
+						trans[++p]='W';
+					}
+				}				
+					
+			}
+			else if(dna_code[i-2]=='C')
+			{
+				if(dna_code[i-1]=='T')
+				{
+					trans[++p]='M';
+				}
+				else if(dna_code[i-1]=='C')
+				{
+					trans[++p]='P';
+				}
+				else if(dna_code[i-1]=='A')
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{
+						trans[++p]='H';
+					}
+					else if(dna_code[i]=='A'||dna_code[i]=='G')
+					{
+						trans[++p]='Q';
+					}
+				}
+				else if(dna_code[i-1]=='G')
+				{
+					trans[++p]='R';
+				}
+			}
+			else if(dna_code[i-2]=='A')
+			{
+				if(dna_code[i-1]=='T')
+				{
+					if(dna_code[i-2]=='G')
+					{
+						trans[++p]='M';
+					}
+					else
+					{
+						trans[++p]='I';
+					}
+				}
+				else if(dna_code[i-1]=='C')
+				{
+					trans[++p]='T';
+				}
+				else if(dna_code[i-1]=='A')
+				{
+					if(dna_code[i-1]=='T'||dna_code[i-1]=='C')
+					{
+						trans[++p]='N';
+					}
+					else
+					{
+						trans[++p]='K';
+					}
+				}
+				else if(dna_code[i-1]=='G')
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{
+						trans[++p]='S';
+					}
+					else
+					{
+						trans[++p]='R';
+					}
+				}
+			}
+			else if(dna_code[i-2]=='G')
+			{
+				if(dna_code[i-1]=='T')
+				{
+					trans[++p]='V';
+				}
+				else if(dna_code[i-1]=='C')
+				{
+					trans[++p]='A';
+				}
+				else if(dna_code[i-1]=='A')
+				{
+					if(dna_code[i]=='T'||dna_code[i]=='C')
+					{		
+						trans[++p]='D';
+					}
+					else
+					{
+						trans[++p]='E';
+					}
+				}
+			}
+			else
+			{
+				trans[++p]='G';
+			}
+		
+		}
+	}
+	for(i=1;i<=p;i++)
+	{
+		if(i%4==0)
+		cout<<"-";
+		cout<<trans[i];
+	}
+
+	
+	return 0;
+}
