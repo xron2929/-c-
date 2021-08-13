@@ -1,0 +1,70 @@
+// 
+#include<stdio.h>
+#include<cstdlib>
+#include<cstring>
+#include<stdint.h>
+using namespace std;
+
+int32_t price = 0;
+size_t length;
+int32_t capacity = 0;
+int32_t recapacity = 0;
+char* string()
+{
+	int c = fgetc(stdin);
+	size_t size = 0;
+	size_t capacity = 15;
+	char* str;
+	if (c == NULL) return NULL;
+	str = (char *)realloc(NULL, sizeof(*str) * capacity);
+	str[size++] = c;
+	if (size +1 == capacity)
+	{
+		capacity = capacity + size + 1;
+		str = (char*)realloc(str, sizeof(*str) * capacity);
+	}
+	while (EOF != (c = fgetc(stdin)) && c != '\n') 
+	{
+		str[size++] = c;
+		if (size+1==capacity)
+		{
+			capacity = capacity + capacity + 1;
+			str = (char*)realloc(str, sizeof(*str) * capacity);
+		}
+	
+	}
+	str[size+1] = '\0';
+	recapacity = capacity;
+	length = size;
+	return str = (char *)realloc(str, sizeof(*str) * (size));
+}
+
+long long stoi(char *str)
+{
+	long long sum = 0;
+	for (int i = 0; i < length; i++)
+	{
+		sum *= 10;
+		sum += (long long)str[i]-'0';
+	}
+	return sum;
+}
+
+
+int main()
+{
+	char* a;
+	a= string();
+	for (int i = 0; i < length; i++)
+	{
+		printf("%c", a[i]);
+	}
+	printf("\n");
+	printf("%d\n", length);
+	printf("%d\n", recapacity);
+	printf("%lld\n",stoi(a));
+	//string의 기본 size는 0 용량은 15
+	//string의 기본 size는 0 용량은 15
+	//그다음 16글자면 용량 31
+	//그다음 17글자면 용량 32
+}
